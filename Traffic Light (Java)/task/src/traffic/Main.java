@@ -88,7 +88,6 @@ public class Main {
             System.out.print(MENU);
             try {
                 int menuOption = scanner.nextInt();
-
                 switch (menuOption) {
                     case 0   -> {
                         System.out.println("Bye!");
@@ -149,16 +148,13 @@ public class Main {
         System.out.print("Input the road name: ");
         String roadToAdd = scanner.next();
         int roadAmount = trafficLightQueue.size();
+        int maxTimer = interval * (roadAmount - 1);
         if (roadAmount != numOfRoads) {
             if (roadAmount == 0) {
                 trafficLightQueue.offer(new TrafficLight(roadToAdd, true, interval));
             } else {
-                int tailTime = trafficLightQueue.peekLast().getTimer();
-                if (roadAmount == 1) {
-                    trafficLightQueue.offer(new TrafficLight(roadToAdd, false, tailTime));
-                } else {
-                    trafficLightQueue.offer(new TrafficLight(roadToAdd, false, tailTime + interval));
-                }
+                trafficLightQueue.offer(new TrafficLight(roadToAdd, false,
+                        trafficLightQueue.peekLast().getTimer() + maxTimer));
             }
             System.out.println(roadToAdd + " added!");
         } else {
