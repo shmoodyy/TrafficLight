@@ -1,0 +1,6 @@
+# Project exclude paths
+/.gradle/
+/Traffic Light (Java)/task/build/
+/Traffic Light (Java)/task/out/
+/Traffic Light (Java)/task/out/production/classes/
+/Traffic Light (Java)/task/out/test/classes/
